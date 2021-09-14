@@ -1,0 +1,17 @@
+{
+  "name": "binary-tree-visualizer",
+  "version": "0.0.1",
+  "description": "A binary tree visualizer",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tirthamouli/binary-tree-visualizer.git"
+  },
+  "author": "tirthamouli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tirthamouli/binary-tree-visualizer/issues"
+  },
+  "homepage": "https://github.com/tirthamouli/binary-tree-visualizer#readme"
+}
