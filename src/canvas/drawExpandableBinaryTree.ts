@@ -5,12 +5,12 @@ import {IndividualInputOptions} from './types';
 /**
  * Draw an explandable binary tree
  *
- * @param {BinaryTreeNode} root
+ * @param {BinaryTreeNode<string | number>} root
  * @param {HTMLCanvasElement} canvasElement
  * @param {IndividualInputOptions} options
  */
 function drawExpandableBinaryTree(
-    root: BinaryTreeNode,
+    root: BinaryTreeNode<string | number>,
     canvasElement: HTMLCanvasElement,
     options: IndividualInputOptions,
 ) {

@@ -15,13 +15,13 @@ import connectPointsWithBezierCurve from './connectPointsWithBezierCurve';
 /**
  * Recursively draw all the nodes
  *
- * @param {BinaryTreeNode} root
+ * @param {BinaryTreeNode<string | number>} root
  * @param {CanvasComponent} canvasComponent
  * @param {number} currentLine
  * @param {HorizontalStartAndEndInput} horizontalConfig
  */
 function recursivelyDrawNodes(
-    root: BinaryTreeNode,
+    root: BinaryTreeNode<string | number>,
     canvasComponent: CanvasComponent,
     currentLine: number,
     horizontalConfig: HorizontalStartAndEndInput,
@@ -72,12 +72,12 @@ function recursivelyDrawNodes(
 /**
  * Draw an explandable binary tree
  *
- * @param {BinaryTreeNode} root
+ * @param {BinaryTreeNode<string | number>} root
  * @param {HTMLCanvasElement} canvasElement
  * @param {IndividualInputOptions} options
  */
 function drawSimpleBinaryTree(
-    root: BinaryTreeNode,
+    root: BinaryTreeNode<string | number>,
     canvasElement: HTMLCanvasElement,
     options: IndividualInputOptions,
 ) {

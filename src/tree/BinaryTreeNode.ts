@@ -5,11 +5,11 @@ import getRandomColor from '../utils/getRandomColor';
 /**
  * Describes a node of a binary tree
  */
-class BinaryTreeNode {
+class BinaryTreeNode<T extends string | number> {
   /**
    * The value of the node
    */
-  value: number
+  value: T
 
   /**
    * The canvas circle
@@ -19,22 +19,22 @@ class BinaryTreeNode {
   /**
    * The left child of the node
    */
-  left?: BinaryTreeNode
+  left?: BinaryTreeNode<T>
 
   /**
    * The right child of the node
    */
-  right?: BinaryTreeNode
+  right?: BinaryTreeNode<T>
 
   /**
    * For constructing a new binary tree node
    *
-   * @param {number} value
+   * @param {T} value
    */
-  constructor(value: number) {
+  constructor(value: T) {
     this.value = value;
     this.nodeCircle = new Circle(
-        value.toString(),
+        `${value}`,
         theme.radius,
         getRandomColor(),
     );
@@ -45,7 +45,7 @@ class BinaryTreeNode {
    *
    * @param {BinaryTreeNode} value
    */
-  setLeft(value: BinaryTreeNode) {
+  setLeft(value: BinaryTreeNode<T>) {
     this.left = value;
   }
 
@@ -54,7 +54,7 @@ class BinaryTreeNode {
    *
    * @param {BinaryTreeNode} value
    */
-  setRight(value: BinaryTreeNode) {
+  setRight(value: BinaryTreeNode<T>) {
     this.right = value;
   }
 

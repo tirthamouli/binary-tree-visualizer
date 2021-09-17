@@ -9,12 +9,12 @@ import {MainInputOptions} from './types';
 /**
  * Draw a binary tree in one of the given types
  *
- * @param {BinaryTreeNode} root
+ * @param {BinaryTreeNode<string | number>} root
  * @param {HTMLCanvasElement} canvasElement
  * @param {Partial<MainInputOptions>} options
  */
 function drawBinaryTree(
-    root: BinaryTreeNode,
+    root: BinaryTreeNode<string | number>,
     canvasElement: HTMLCanvasElement,
     options: Partial<MainInputOptions> = {},
 ) {
