@@ -1,12 +1,13 @@
-import {Theme} from '../types/Theme';
+import {Theme} from './types';
 
 const theme: Theme = {
   radius: 20,
-  leafNodeSpace: 40,
+  leafNodeSpace: 60,
   lineHeight: 90,
   textFont: 'Poppins',
+  strokeColor: '#f56042',
   colorArray: [
-    {bgColor: '#c4dfe6', borderColor: '#003b46'},
+    {bgColor: '#fff2e0', borderColor: '#f56042'},
   ],
 };
 
@@ -22,6 +23,7 @@ export function setTheme(userDefinedTheme: Partial<Theme>) {
     lineHeight = theme.lineHeight,
     colorArray = theme.colorArray,
     textFont = theme.textFont,
+    strokeColor = theme.strokeColor,
   } = userDefinedTheme;
 
   theme.radius = radius;
@@ -29,6 +31,7 @@ export function setTheme(userDefinedTheme: Partial<Theme>) {
   theme.lineHeight = lineHeight;
   theme.colorArray = colorArray;
   theme.textFont = textFont;
+  theme.strokeColor = strokeColor;
 }
 
 export default theme;

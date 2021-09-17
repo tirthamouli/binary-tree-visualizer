@@ -1,4 +1,4 @@
-import {CircleColorSettings} from '../types/CircleColorSettings';
+import {CircleColorSettings} from '../config/types';
 import theme from '../config/theme';
 
 /**

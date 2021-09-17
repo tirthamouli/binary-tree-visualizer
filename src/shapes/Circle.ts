@@ -1,4 +1,5 @@
-import {CircleColorSettings} from '../types/CircleColorSettings';
+import theme from '../config/theme';
+import {CircleColorSettings} from '../config/types';
 
 /**
  * Describes a circle in the canvas
@@ -106,7 +107,7 @@ class Circle {
     }
 
     ctx.fillStyle = borderColor;
-    ctx.font = `${fontSize} Poppins`;
+    ctx.font = `${fontSize} ${theme.textFont}`;
     ctx.textAlign = 'center';
     ctx.fillText(value, x, y + ySpacing);
   }

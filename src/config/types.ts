@@ -1,4 +1,10 @@
-import {CircleColorSettings} from './CircleColorSettings';
+/**
+ * Color settings in Circle class
+ */
+export type CircleColorSettings = {
+  borderColor: string
+  bgColor: string,
+};
 
 /**
  * The theme settings
@@ -8,5 +14,6 @@ export type Theme = {
   leafNodeSpace: number,
   lineHeight: number,
   textFont: string,
+  strokeColor: string,
   colorArray: CircleColorSettings[],
 };

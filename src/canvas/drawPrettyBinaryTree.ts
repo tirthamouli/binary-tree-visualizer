@@ -1,15 +1,17 @@
-import CanvasComponent from './canvas';
 import BinaryTreeNode from '../tree/BinaryTreeNode';
+import {IndividualInputOptions} from './types';
 
 /**
  * Draw an explandable binary tree
  *
  * @param {BinaryTreeNode} root
- * @param {CanvasComponent} canvasComponent
+ * @param {HTMLCanvasElement} canvasElement
+ * @param {IndividualInputOptions} options
  */
 function drawPrettyBinaryTree(
     root: BinaryTreeNode,
-    canvasComponent: CanvasComponent,
+    canvasElement: HTMLCanvasElement,
+    options: IndividualInputOptions,
 ) {
   throw new Error('Not yet implemented');
 }

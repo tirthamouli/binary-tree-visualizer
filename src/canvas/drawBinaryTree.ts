@@ -1,33 +1,49 @@
-import CanvasComponent from './canvas';
 import BinaryTreeNode from '../tree/BinaryTreeNode';
 import {VisualizationType} from '../enumns/VisualizationType';
 import drawPrettyBinaryTree from './drawPrettyBinaryTree';
 import drawExpandableBinaryTree from './drawExpandableBinaryTree';
 import drawSimpleBinaryTree from './drawSimpleBinaryTree';
+import {MainInputOptions} from './types';
+
 
 /**
- * Draw a binary tree
+ * Draw a binary tree in one of the given types
  *
  * @param {BinaryTreeNode} root
- * @param {CanvasComponent} canvasComponent
- * @param {VisualizationType} type
+ * @param {HTMLCanvasElement} canvasElement
+ * @param {Partial<MainInputOptions>} options
  */
 function drawBinaryTree(
     root: BinaryTreeNode,
-    canvasComponent: CanvasComponent,
-    type: VisualizationType,
+    canvasElement: HTMLCanvasElement,
+    options: Partial<MainInputOptions> = {},
 ) {
+  const {
+    type = VisualizationType.SIMPLE,
+    maxHeigth = window.innerHeight,
+    maxWidth = window.innerWidth,
+  } = options;
+
   switch (type) {
     case VisualizationType.PRETTY:
-      drawPrettyBinaryTree(root, canvasComponent);
+      drawPrettyBinaryTree(root, canvasElement, {
+        maxHeigth,
+        maxWidth,
+      });
       break;
 
     case VisualizationType.EXPANDABLE:
-      drawExpandableBinaryTree(root, canvasComponent);
+      drawExpandableBinaryTree(root, canvasElement, {
+        maxHeigth,
+        maxWidth,
+      });
       break;
 
     default:
-      drawSimpleBinaryTree(root, canvasComponent);
+      drawSimpleBinaryTree(root, canvasElement, {
+        maxHeigth,
+        maxWidth,
+      });
       break;
   }
 }

@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "tsc -p . --watch",
     "build": "tsc -p .",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "precommit": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@typescript-eslint/parser": "^4.31.1",
     "eslint": "^7.32.0",
     "eslint-config-google": "^0.14.0",
+    "husky": "^7.0.2",
     "typescript": "^4.4.3"
   }
 }
