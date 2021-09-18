@@ -49,6 +49,7 @@ class BinarySearchTreeNode<T extends string | number>
       if (value < this.value) {
         if (this.left) {
           this.left.insert(value);
+          return;
         }
         this.setLeft(new BinarySearchTreeNode(value));
         return;
@@ -57,6 +58,7 @@ class BinarySearchTreeNode<T extends string | number>
       // When value is greater
       if (this.right) {
         this.right.insert(value);
+        return;
       }
       this.setRight(new BinarySearchTreeNode(value));
     }
