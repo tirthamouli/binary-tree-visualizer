@@ -65,9 +65,9 @@ class BinaryTreeNode<T extends string | number> {
    * @return {number}
    */
   getHeight():number {
-    const leftHeight = this.left ? this.left.getHeight() : 0;
-    const rightHeight = this.right ? this.right.getHeight() : 0;
-    return leftHeight > rightHeight ? leftHeight + 1 : rightHeight + 1;
+    const leftHeight = this.left?.getHeight() || 0;
+    const rightHeight = this.right?.getHeight() || 0;
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 }
 

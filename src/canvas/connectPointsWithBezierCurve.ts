@@ -1,4 +1,4 @@
-import {CanvasComponent} from '.';
+import CanvasComponent from './Canvas';
 import theme from '../config/theme';
 import BezierCurve from '../strokes/BezierCurve';
 import {HorizontalStartAndEndInput, VerticalStartAndEndInput} from './types';

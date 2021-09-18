@@ -1,4 +1,4 @@
-import CanvasComponent from './canvas';
+import CanvasComponent from './Canvas';
 import drawBinaryTree from './drawBinaryTree';
 
 export {

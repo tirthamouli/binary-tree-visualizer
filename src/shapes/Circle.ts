@@ -64,7 +64,7 @@ class Circle {
    *
    * @param {CanvasRenderingContext2D} ctx
    */
-  drawCircle(ctx: CanvasRenderingContext2D) {
+  private drawCircle(ctx: CanvasRenderingContext2D) {
     const {x, y, radius, colorSettings} = this;
     const {bgColor} = colorSettings;
 
@@ -79,7 +79,7 @@ class Circle {
    *
    * @param {CanvasRenderingContext2D} ctx
    */
-  drawBorder(ctx: CanvasRenderingContext2D) {
+  private drawBorder(ctx: CanvasRenderingContext2D) {
     const {x, y, radius, colorSettings} = this;
     const {borderColor} = colorSettings;
 
@@ -93,7 +93,7 @@ class Circle {
    *
    * @param {CanvasRenderingContext2D} ctx
    */
-  writeText(ctx: CanvasRenderingContext2D) {
+  private writeText(ctx: CanvasRenderingContext2D) {
     const {x, y, value, colorSettings} = this;
     const {borderColor} = colorSettings;
 

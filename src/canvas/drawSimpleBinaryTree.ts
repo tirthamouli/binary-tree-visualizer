@@ -1,4 +1,4 @@
-import CanvasComponent from './canvas';
+import CanvasComponent from './Canvas';
 import BinaryTreeNode from '../tree/BinaryTreeNode';
 import theme from '../config/theme';
 import {
