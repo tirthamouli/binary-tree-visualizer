@@ -8,7 +8,8 @@
     "dev": "tsc -p . --watch",
     "build": "tsc -p .",
     "lint": "eslint . --ext .ts",
-    "precommit": "npm run lint && npm run build"
+    "precommit": "npm run lint && npm run build",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
