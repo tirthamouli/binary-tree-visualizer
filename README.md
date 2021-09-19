@@ -69,6 +69,11 @@ type options = {
   maxWidth?: number
 };
 ```
+### Simple
+![Simple](https://user-images.githubusercontent.com/22812597/133932192-48923490-010f-4835-a15a-827c8cb732a3.png)
+
+### Pretty
+![Pretty](https://user-images.githubusercontent.com/22812597/133932200-cb612622-1e4c-4cc7-a905-317b638987b4.png)
 
 ## Theme
 Theme can be tweaked as well
