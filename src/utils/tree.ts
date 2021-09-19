@@ -16,15 +16,63 @@ export function getMaxLeafNodesFromHeight(treeHeight: number) {
  * @param {number} maxNodes - Maximum number of nodes
  * @return {number} - The max width required
  */
-export function getCanvasWidthFromMaxLeafNodes(maxNodes: number) {
+export function getCanvasWidthFromMaxNodeSpacing(maxNodes: number) {
   return (maxNodes + 2) * theme.leafNodeSpace;
 }
 
 /**
+ * Get the x position from given horizontal node position
+ *
+ * @param {number} nodes - The number of nodes from the left
+ * @return {number} - The x position
+ */
+export function getXPositionFromGivenHorizontalNodePosition(nodes: number) {
+  return (nodes) * theme.leafNodeSpace;
+}
+
+/**
+ * Get canvas height from the tree height
  *
  * @param {number} treeHeight - Height of the tree (number of nodes from)
  * @return {number} - The canvas height in px
  */
 export function getCanvasHeightFromTreeHeight(treeHeight: number) {
   return (treeHeight) * theme.lineHeight;
+}
+
+/**
+ * Get required and actual height and width
+ *
+ * @param {number} maxNodeSpacing
+ * @param {number} heightOfTree
+ * @param {number} maxWidth
+ * @param {number} maxHeigth
+ * @return {{
+ *  maxCanvasHeightRequired: number,
+ *  maxCanvasWidthRequired:number,
+ *  actualMaxHeight: number,
+ *  actualMaxWidth: number
+ * }}
+ */
+export function getRequiredAndActualHeightandWidth(
+    maxNodeSpacing: number,
+    heightOfTree: number,
+    maxWidth: number,
+    maxHeigth: number,
+) {
+  const maxCanvasWidthRequired = getCanvasWidthFromMaxNodeSpacing(
+      maxNodeSpacing,
+  );
+  const maxCanvasHeightRequired = getCanvasHeightFromTreeHeight(heightOfTree+1);
+  const actualMaxWidth = maxCanvasWidthRequired > maxWidth ?
+    maxCanvasWidthRequired : maxWidth;
+  const actualMaxHeight = maxCanvasHeightRequired > maxHeigth ?
+    maxCanvasHeightRequired : maxHeigth;
+
+  return {
+    maxCanvasHeightRequired,
+    maxCanvasWidthRequired,
+    actualMaxHeight,
+    actualMaxWidth,
+  };
 }

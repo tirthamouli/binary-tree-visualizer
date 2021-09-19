@@ -59,7 +59,7 @@ drawBinaryTree can take a 3rd options argument
 import { VisualizationType } from 'binary-tree-visualizer';
 
 type options = {
-  // SIMPLE is taken by default. (Only simple has been implemented till now)
+  // SIMPLE is taken by default. (EXPANDABLE hasn't been implemented yet)
   type?:  VisualizationType.SIMPLE |  VisualizationType.EXPANDABLE | VisualizationType.PRETTY,
   // SUGGESTION: Max heigth of the canvas. If required more will be taken
   maxHeight?: number,

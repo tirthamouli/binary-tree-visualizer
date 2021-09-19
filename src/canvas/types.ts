@@ -8,9 +8,20 @@ export type HorizontalStartAndEndInput = {
   xEnd: number
 };
 
+/**
+ * Vertical start and end points
+ */
 export type VerticalStartAndEndInput = {
   yStart: number,
   yEnd: number
+};
+
+/**
+ * Left and right node spacing requirement
+ */
+export type LeftAndRightSpacing = {
+  left: number,
+  right: number
 };
 
 /**

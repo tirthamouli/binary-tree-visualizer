@@ -1,8 +1,10 @@
 import theme from '../../../src/config/theme';
 import {
   getCanvasHeightFromTreeHeight,
-  getCanvasWidthFromMaxLeafNodes,
+  getCanvasWidthFromMaxNodeSpacing,
   getMaxLeafNodesFromHeight,
+  getXPositionFromGivenHorizontalNodePosition,
+  getRequiredAndActualHeightandWidth,
 } from '../../../src/utils/tree';
 
 describe('Tree utils test', () => {
@@ -14,23 +16,90 @@ describe('Tree utils test', () => {
     });
   });
 
-  describe('getCanvasWidthFromMaxLeafNodes', () => {
+  describe('getCanvasWidthFromMaxNodeSpacing tests', () => {
     it('should get canvas width from the max leaf nodes', () => {
       const mockLeafNodes = 4;
       const expectedResult = 6 * theme.leafNodeSpace;
       expect(
-          getCanvasWidthFromMaxLeafNodes(mockLeafNodes),
+          getCanvasWidthFromMaxNodeSpacing(mockLeafNodes),
       ).toBe(expectedResult);
     });
   });
 
-  describe('getCanvasHeightFromTreeHeight', () => {
+  describe('getCanvasHeightFromTreeHeight tests', () => {
     it('should be able to get canvas height from tree height', () => {
       const mockTreeHeight = 12;
       const expectedResult = 12 * theme.lineHeight;
       expect(
           getCanvasHeightFromTreeHeight(mockTreeHeight),
       ).toBe(expectedResult);
+    });
+  });
+
+  describe('getXPositionFromGivenHorizontalNodePosition tests', () => {
+    it(`should be able to get x position from given horizontal node position`,
+        () => {
+          const mockHorizontalNodePosition = 12;
+          const expectedResult = 12 * theme.leafNodeSpace;
+          expect(
+              getXPositionFromGivenHorizontalNodePosition(
+                  mockHorizontalNodePosition,
+              ),
+          ).toBe(expectedResult);
+        });
+  });
+
+  describe('getRequiredAndActualHeightandWidth tests', () => {
+    it(`should be able to get required and actual width and height 
+    (when maxHeight and width is greater)`,
+    () => {
+      const mockMaxNodeSpacing = 12;
+      const mockHeightOfTree = 10;
+      const mockMaxHeigh = 1920;
+      const mockMaxWidth = 1080;
+
+      const {
+        maxCanvasHeightRequired,
+        maxCanvasWidthRequired,
+        actualMaxHeight,
+        actualMaxWidth,
+      } = getRequiredAndActualHeightandWidth(
+          mockMaxNodeSpacing,
+          mockHeightOfTree,
+          mockMaxWidth,
+          mockMaxHeigh,
+      );
+
+      expect(maxCanvasHeightRequired).toBe(990);
+      expect(maxCanvasWidthRequired).toBe(840);
+      expect(actualMaxHeight).toBe(1920);
+      expect(actualMaxWidth).toBe(1080);
+    });
+
+    it(`should be able to get required and actual width and height 
+    (when maxHeight and width is lesser)`,
+    () => {
+      const mockMaxNodeSpacing = 12;
+      const mockHeightOfTree = 10;
+      const mockMaxHeigh = 100;
+      const mockMaxWidth = 200;
+
+      const {
+        maxCanvasHeightRequired,
+        maxCanvasWidthRequired,
+        actualMaxHeight,
+        actualMaxWidth,
+      } = getRequiredAndActualHeightandWidth(
+          mockMaxNodeSpacing,
+          mockHeightOfTree,
+          mockMaxWidth,
+          mockMaxHeigh,
+      );
+
+      expect(maxCanvasHeightRequired).toBe(990);
+      expect(maxCanvasWidthRequired).toBe(840);
+      expect(actualMaxHeight).toBe(990);
+      expect(actualMaxWidth).toBe(840);
     });
   });
 });

@@ -3,8 +3,8 @@ import BinaryTreeNode from '../tree/BinaryTreeNode';
 import theme from '../config/theme';
 import {
   getCanvasHeightFromTreeHeight,
-  getCanvasWidthFromMaxLeafNodes,
   getMaxLeafNodesFromHeight,
+  getRequiredAndActualHeightandWidth,
 } from '../utils/tree';
 import {
   HorizontalStartAndEndInput,
@@ -86,14 +86,16 @@ function drawSimpleBinaryTree(
   const {maxHeigth, maxWidth} = options;
 
   // Max height and width requirements
-  const maxCanvasWidthRequired = getCanvasWidthFromMaxLeafNodes(
+  const {
+    maxCanvasWidthRequired,
+    actualMaxHeight,
+    actualMaxWidth,
+  } = getRequiredAndActualHeightandWidth(
       maxNumberOfLeafNodes,
+      heightOfTree,
+      maxWidth,
+      maxHeigth,
   );
-  const maxCanvasHeightRequired = getCanvasHeightFromTreeHeight(heightOfTree+1);
-  const actualMaxWidth = maxCanvasWidthRequired > maxWidth ?
-  maxCanvasWidthRequired : maxWidth;
-  const actualMaxHeight = maxCanvasHeightRequired > maxHeigth ?
-  maxCanvasHeightRequired : maxHeigth;
 
   // Init calculation
   const midPointInCanvas = actualMaxWidth / 2;
