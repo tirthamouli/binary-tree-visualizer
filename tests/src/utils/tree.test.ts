@@ -71,7 +71,7 @@ describe('Tree utils test', () => {
       );
 
       expect(maxCanvasHeightRequired).toBe(990);
-      expect(maxCanvasWidthRequired).toBe(840);
+      expect(maxCanvasWidthRequired).toBe(1050);
       expect(actualMaxHeight).toBe(1920);
       expect(actualMaxWidth).toBe(1080);
     });
@@ -97,9 +97,9 @@ describe('Tree utils test', () => {
       );
 
       expect(maxCanvasHeightRequired).toBe(990);
-      expect(maxCanvasWidthRequired).toBe(840);
+      expect(maxCanvasWidthRequired).toBe(1050);
       expect(actualMaxHeight).toBe(990);
-      expect(actualMaxWidth).toBe(840);
+      expect(actualMaxWidth).toBe(1050);
     });
   });
 });

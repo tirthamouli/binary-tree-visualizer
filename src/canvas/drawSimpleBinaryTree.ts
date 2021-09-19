@@ -99,8 +99,10 @@ function drawSimpleBinaryTree(
 
   // Init calculation
   const midPointInCanvas = actualMaxWidth / 2;
-  const xStart = midPointInCanvas - maxCanvasWidthRequired / 2;
-  const xEnd = midPointInCanvas + maxCanvasWidthRequired / 2;
+  const xStart = (midPointInCanvas - maxCanvasWidthRequired / 2) +
+  theme.leafNodeSpace;
+  const xEnd = (midPointInCanvas + maxCanvasWidthRequired / 2) -
+  theme.leafNodeSpace;
 
   // Initialize the canvas
   const canvasComponent = new CanvasComponent(
@@ -108,6 +110,8 @@ function drawSimpleBinaryTree(
       actualMaxHeight,
       actualMaxWidth,
   );
+
+  // Recursively draw the tree
   recursivelyDrawNodes(root, canvasComponent, 0.5, {xStart, xEnd});
 }
 

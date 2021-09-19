@@ -99,8 +99,12 @@ function recursivelyDrawNodes(
 function calculateSpacingMapRecursively(
     root: BinaryTreeNode<string | number>,
 ): number {
-  const left = root.left ? calculateSpacingMapRecursively(root.left) + 1: 0;
-  const right = root.right ? calculateSpacingMapRecursively(root.right) + 1: 0;
+  const left = root.left ? calculateSpacingMapRecursively(
+      root.left,
+  ) + 0.5: 0;
+  const right = root.right ? calculateSpacingMapRecursively(
+      root.right,
+  ) + 0.5: 0;
   spacingMap.set(root, {
     left,
     right,
@@ -141,7 +145,8 @@ function drawPrettyBinaryTree(
   // Init calculation
   const left = spacingMap.get(root)!.left;
   const midPointInCanvas = actualMaxWidth / 2;
-  const xStart = midPointInCanvas - maxCanvasWidthRequired / 2;
+  const xStart = (midPointInCanvas - maxCanvasWidthRequired / 2) +
+  theme.leafNodeSpace;
 
   // Initialize the canvas
   const canvasComponent = new CanvasComponent(

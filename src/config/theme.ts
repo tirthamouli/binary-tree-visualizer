@@ -2,7 +2,7 @@ import {Theme} from './types';
 
 const theme: Theme = {
   radius: 20,
-  leafNodeSpace: 60,
+  leafNodeSpace: 75,
   lineHeight: 90,
   textFont: 'Poppins',
   strokeColor: '#f56042',
