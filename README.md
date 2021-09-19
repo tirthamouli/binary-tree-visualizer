@@ -59,7 +59,9 @@ drawBinaryTree can take a 3rd options argument
 import { VisualizationType } from 'binary-tree-visualizer';
 
 type options = {
-  // SIMPLE is taken by default. (EXPANDABLE hasn't been implemented yet)
+  // SIMPLE: Taken by default. It assumes that max number of leaf nodes are present and decides the spacing accordingly
+  // PRETTY: Spacing is dynamic according to the nodes.
+  // EXPANDABLE: Not yet implemented.
   type?:  VisualizationType.SIMPLE |  VisualizationType.EXPANDABLE | VisualizationType.PRETTY,
   // SUGGESTION: Max heigth of the canvas. If required more will be taken
   maxHeight?: number,
