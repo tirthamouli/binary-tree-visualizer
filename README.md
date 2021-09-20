@@ -114,3 +114,7 @@ const root = new BinarySearchTreeNode(100);
 
 drawBinaryTree(root, document.querySelector('canvas'));
 ```
+
+# Demo
+
+Code sandbox: https://codesandbox.io/s/busy-leftpad-coqx6?file=/src/index.ts
