@@ -145,8 +145,7 @@ function drawPrettyBinaryTree(
   // Init calculation
   const left = spacingMap.get(root)!.left;
   const midPointInCanvas = actualMaxWidth / 2;
-  const xStart = (midPointInCanvas - maxCanvasWidthRequired / 2) +
-  theme.leafNodeSpace;
+  const xStart = (midPointInCanvas - maxCanvasWidthRequired / 2);
 
   // Initialize the canvas
   const canvasComponent = new CanvasComponent(
