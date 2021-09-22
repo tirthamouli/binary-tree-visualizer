@@ -117,4 +117,4 @@ drawBinaryTree(root, document.querySelector('canvas'));
 
 # Demo
 
-Code sandbox: https://codesandbox.io/s/busy-leftpad-coqx6?file=/src/index.ts
+Code sandbox: https://codesandbox.io/s/binary-tree-visualizer-coqx6?file=/src/index.ts
