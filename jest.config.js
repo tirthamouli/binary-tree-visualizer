@@ -9,6 +9,7 @@ module.exports = {
   'transform': {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
+  'verbose': true,
   'coverageThreshold': {
     'global': {
       'branches': 90,

@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+import {CanvasComponent} from '../../../src';
 import theme from '../../../src/config/theme';
 import Circle from '../../../src/shapes/Circle';
 
@@ -11,9 +15,11 @@ describe('Circle tests', () => {
   const mockX = 120;
   const mockY = 140;
 
+  let mockComp: CanvasComponent;
   let mockCtx: any;
 
   beforeEach(() => {
+    const $el = document.createElement('canvas');
     mockCtx = {
       beginPath: jest.fn(),
       moveTo: jest.fn(),
@@ -23,6 +29,9 @@ describe('Circle tests', () => {
       fill: jest.fn(),
       fillText: jest.fn(),
     };
+    $el.getContext = jest.fn().mockReturnValue(mockCtx);
+
+    mockComp = new CanvasComponent($el, 1000, 1000);
   });
 
   it('should initialize a proper circle', () => {
@@ -43,7 +52,7 @@ describe('Circle tests', () => {
 
   it('should be able to draw the circle (normal font)', () => {
     const circle = new Circle(mockValue, mockRadius, mockColorSettings);
-    circle.draw(mockCtx);
+    circle.draw(mockComp);
 
     expect(mockCtx.font).toBe(`8pt ${theme.textFont}`);
     expect(mockCtx.beginPath).toBeCalledTimes(1);
@@ -55,7 +64,7 @@ describe('Circle tests', () => {
 
   it('should be able to draw the circle (small font)', () => {
     const circle = new Circle('10', mockRadius, mockColorSettings);
-    circle.draw(mockCtx);
+    circle.draw(mockComp);
 
     expect(mockCtx.font).toBe(`10pt ${theme.textFont}`);
     expect(mockCtx.beginPath).toBeCalledTimes(1);

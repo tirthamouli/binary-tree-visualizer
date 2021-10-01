@@ -1,3 +1,4 @@
+import {CanvasComponent} from '..';
 import theme from '../config/theme';
 import {CircleColorSettings} from '../config/types';
 
@@ -63,13 +64,18 @@ class Circle {
    * Draw the circle
    *
    * @param {CanvasRenderingContext2D} ctx
+   * @param {number} radius
+   * @param {string} color
    */
-  private drawCircle(ctx: CanvasRenderingContext2D) {
-    const {x, y, radius, colorSettings} = this;
-    const {bgColor} = colorSettings;
+  private drawCircle(
+      ctx: CanvasRenderingContext2D,
+      radius: number,
+      color: string,
+  ) {
+    const {x, y} = this;
 
     ctx.beginPath();
-    ctx.fillStyle = bgColor;
+    ctx.fillStyle = color;
     ctx.arc(x, y, radius, 0, Math.PI * 2, false);
     ctx.fill();
   }
@@ -117,17 +123,24 @@ class Circle {
    * Draw the border
    * Add the text
    *
-   * @param {CanvasRenderingContext2D} ctx
+   * @param {CanvasComponent} comp
+   * @return {string} - The color id represented by the unique color
    */
-  draw(ctx: CanvasRenderingContext2D) {
+  draw(comp: CanvasComponent) {
+    const circleId = comp.getNextColor();
+
     // Draw circle
-    this.drawCircle(ctx);
+    this.drawCircle(comp.getContext(), this.radius, this.colorSettings.bgColor);
+    this.drawCircle(comp.getHitContext(), this.radius + 1, circleId);
 
     // Draw border
-    this.drawBorder(ctx);
+    this.drawBorder(comp.getContext());
 
     // Write text
-    this.writeText(ctx);
+    this.writeText(comp.getContext());
+
+    // Return the colorId
+    return circleId;
   }
 }
 

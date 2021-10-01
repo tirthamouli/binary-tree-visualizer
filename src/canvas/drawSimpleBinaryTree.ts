@@ -35,7 +35,7 @@ function recursivelyDrawNodes(
 
   // Draw the node
   root.nodeCircle.setCoordinates(xPosition, yPosition);
-  root.nodeCircle.draw(canvasComponent.getContext());
+  root.nodeCircle.draw(canvasComponent);
 
 
   // Draw the left child nodes

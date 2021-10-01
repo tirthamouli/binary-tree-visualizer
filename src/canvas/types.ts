@@ -39,4 +39,4 @@ export type MainInputOptions = {
   type: VisualizationType,
 } & IndividualInputOptions;
 
-
+export type GetColorCallBack = (color: string) => any

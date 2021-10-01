@@ -11,14 +11,10 @@ describe('drawExpandableBinaryTree tests', () => {
 
   // @Todo: Update this once implemented
   it('should throw error as it is not implemented', () => {
-    try {
-      drawExpandableBinaryTree(mockBinaryTreeNode, mockCanvas, {
-        maxHeigth: 1080,
-        maxWidth: 1920,
-      });
-    } catch (err) {
-      expect(err).toStrictEqual(new Error('Not yet implemented'));
-    }
+    expect(() => drawExpandableBinaryTree(mockBinaryTreeNode, mockCanvas, {
+      maxHeigth: 1080,
+      maxWidth: 1920,
+    })).toThrow(new Error('Not yet implemented'));
   });
 });
 
