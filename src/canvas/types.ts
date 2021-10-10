@@ -39,4 +39,12 @@ export type MainInputOptions = {
   type: VisualizationType,
 } & IndividualInputOptions;
 
-export type GetColorCallBack = (color: string) => any
+/**
+ * Callback for getting color
+ */
+export type GetColorCallBack = (color: string) => any;
+
+/**
+ * Defines the path
+ */
+export type PathArray = Array<'left' | 'right'>;

@@ -2,6 +2,7 @@ import {Theme} from './types';
 
 const theme: Theme = {
   radius: 20,
+  growthAndShrinkTimes: 1.25,
   leafNodeSpace: 75,
   lineHeight: 90,
   textFont: 'Poppins',
@@ -19,6 +20,7 @@ const theme: Theme = {
 export function setTheme(userDefinedTheme: Partial<Theme>) {
   const {
     radius = theme.radius,
+    growthAndShrinkTimes = theme.growthAndShrinkTimes,
     leafNodeSpace = theme.leafNodeSpace,
     lineHeight = theme.lineHeight,
     colorArray = theme.colorArray,
@@ -27,6 +29,7 @@ export function setTheme(userDefinedTheme: Partial<Theme>) {
   } = userDefinedTheme;
 
   theme.radius = radius;
+  theme.growthAndShrinkTimes = growthAndShrinkTimes;
   theme.leafNodeSpace = leafNodeSpace;
   theme.lineHeight = lineHeight;
   theme.colorArray = colorArray;

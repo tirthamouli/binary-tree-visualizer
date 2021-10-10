@@ -14,9 +14,8 @@ describe('connectPointsWithBezierCurve tests', () => {
   const mockHeight = 1080;
   const mockCanvasComponent = new CanvasComponent(
       mockCanvas,
-      mockHeight,
-      mockWidth,
   );
+  mockCanvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
   const mockHorizontalConfig = {
     xStart: 100,
     xEnd: 200,

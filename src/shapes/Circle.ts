@@ -1,6 +1,12 @@
 import {CanvasComponent} from '..';
 import theme from '../config/theme';
 import {CircleColorSettings} from '../config/types';
+import {RadiusSettings} from './types';
+
+/**
+ * Rate at which circle will grow or shrink
+ */
+const growthRate = 0.3;
 
 /**
  * Describes a circle in the canvas
@@ -9,28 +15,32 @@ class Circle {
   /**
    * Radius of the circle
    */
-  radius: number
+  private radiusSettings: RadiusSettings
+
+  /**
+   * The colorId of the circle
+   */
+  private colorId: string = ''
 
   /**
    * Color of the circle
    */
-  colorSettings: CircleColorSettings
+  private colorSettings: CircleColorSettings
 
   /**
    * Value to be displayed inside the circle
    */
-  value: string
+  private value: string
 
   /**
    * X Position of the circle
    */
-  x: number = -1
+  private x: number = -1
 
   /**
    * Y Position of the circle
    */
-  y: number = -1
-
+  private y: number = -1
 
   /**
    * For constructing a new circle
@@ -46,18 +56,12 @@ class Circle {
   ) {
     this.value = value;
     this.colorSettings = colorSettings;
-    this.radius = radius;
-  }
-
-  /**
-   * Set the x and y coordinates of the circle
-   *
-   * @param {number} x
-   * @param {number} y
-   */
-  setCoordinates(x: number, y: number) {
-    this.x = x;
-    this.y = y;
+    this.radiusSettings = {
+      currentRadius: radius,
+      originalRadius: radius,
+      maxRadius: radius * theme.growthAndShrinkTimes,
+      minRadius: radius / theme.growthAndShrinkTimes,
+    };
   }
 
   /**
@@ -86,10 +90,10 @@ class Circle {
    * @param {CanvasRenderingContext2D} ctx
    */
   private drawBorder(ctx: CanvasRenderingContext2D) {
-    const {x, y, radius, colorSettings} = this;
+    const {x, y, colorSettings, radiusSettings: {currentRadius: radius}} = this;
     const {borderColor} = colorSettings;
 
-    ctx.arc(x, y, radius + 1, 0, Math.PI * 2, false);
+    ctx.arc(x, y, radius, 0, Math.PI * 2, false);
     ctx.strokeStyle = borderColor;
     ctx.stroke();
   }
@@ -119,6 +123,105 @@ class Circle {
   }
 
   /**
+   * Get the current radius
+   *
+   * @return {number}
+   */
+  getRadius() {
+    const {
+      radiusSettings: {currentRadius: radius},
+    } = this;
+    return radius;
+  }
+
+  /**
+   * Increase radius of the circle
+   * @param {number} maxRadius
+   * @return {boolean} - Weather size was changed
+   */
+  grow(maxRadius = this.radiusSettings.maxRadius) {
+    const {
+      radiusSettings: {
+        currentRadius,
+      },
+    } = this;
+
+    if (currentRadius < maxRadius) {
+      const originalIncreasedRadius = currentRadius + growthRate;
+      this.radiusSettings.currentRadius = originalIncreasedRadius > maxRadius ?
+      maxRadius : originalIncreasedRadius;
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * Decrease the radius of the circle
+   * @param {number} minRadius
+   * @return {boolean} - Weather size was changed
+   */
+  shrink(minRadius = this.radiusSettings.minRadius) {
+    const {
+      radiusSettings: {
+        currentRadius,
+      },
+    } = this;
+
+    if (currentRadius > minRadius) {
+      const originalDecreasedRadius = currentRadius - growthRate;
+      this.radiusSettings.currentRadius = originalDecreasedRadius < minRadius ?
+      minRadius : originalDecreasedRadius;
+      return true;
+    }
+
+    return false;
+  }
+
+  /**
+   * Bring the circle back to its original radius
+   * @return {boolean} - Weather size was changed
+   */
+  restoreCircle() {
+    const {
+      radiusSettings: {
+        currentRadius,
+        originalRadius,
+      },
+    } = this;
+
+    if (currentRadius > originalRadius) {
+      return this.shrink(originalRadius);
+    }
+
+    if (currentRadius < originalRadius) {
+      return this.grow(originalRadius);
+    }
+
+    return false;
+  }
+
+  /**
+   * Set the color id of the circle
+   *
+   * @param {string} colorId
+   */
+  setColorId(colorId: string) {
+    this.colorId = colorId;
+  }
+
+  /**
+   * Set the x and y coordinates of the circle
+   *
+   * @param {number} x
+   * @param {number} y
+   */
+  setCoordinates(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  /**
    * Draw the circle on the screen
    * Draw the border
    * Add the text
@@ -127,11 +230,23 @@ class Circle {
    * @return {string} - The color id represented by the unique color
    */
   draw(comp: CanvasComponent) {
-    const circleId = comp.getNextColor();
+    const {
+      radiusSettings: {currentRadius: radius},
+      colorSettings: {bgColor},
+    } = this;
 
     // Draw circle
-    this.drawCircle(comp.getContext(), this.radius, this.colorSettings.bgColor);
-    this.drawCircle(comp.getHitContext(), this.radius + 1, circleId);
+    this.colorId = this.colorId ? this.colorId : comp.getNextColor();
+    this.drawCircle(
+        comp.getContext(),
+        radius,
+        bgColor,
+    );
+    this.drawCircle(
+        comp.getHitContext(),
+        radius,
+        this.colorId,
+    );
 
     // Draw border
     this.drawBorder(comp.getContext());
@@ -140,7 +255,7 @@ class Circle {
     this.writeText(comp.getContext());
 
     // Return the colorId
-    return circleId;
+    return this.colorId;
   }
 }
 

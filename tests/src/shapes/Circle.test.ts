@@ -14,9 +14,23 @@ describe('Circle tests', () => {
   const mockValue = '1000';
   const mockX = 120;
   const mockY = 140;
-
   let mockComp: CanvasComponent;
   let mockCtx: any;
+  const growRadiusTimes = (circle: Circle, times: number) => {
+    for (let i = 0; i < times; i+=1) {
+      circle.grow();
+    }
+  };
+  const shrinkRadiusTimes = (circle: Circle, times: number) => {
+    for (let i = 0; i < times; i+=1) {
+      circle.shrink();
+    }
+  };
+  const restoreRadiusTimes = (circle: Circle, times: number) => {
+    for (let i = 0; i < times; i+=1) {
+      circle.restoreCircle();
+    }
+  };
 
   beforeEach(() => {
     const $el = document.createElement('canvas');
@@ -31,23 +45,23 @@ describe('Circle tests', () => {
     };
     $el.getContext = jest.fn().mockReturnValue(mockCtx);
 
-    mockComp = new CanvasComponent($el, 1000, 1000);
+    mockComp = new CanvasComponent($el);
   });
 
   it('should initialize a proper circle', () => {
     const circle = new Circle(mockValue, mockRadius, mockColorSettings);
 
-    expect(circle.value).toBe(mockValue);
-    expect(circle.colorSettings).toStrictEqual(mockColorSettings);
-    expect(circle.radius).toBe(mockRadius);
+    expect((circle as any).value).toBe(mockValue);
+    expect((circle as any).colorSettings).toStrictEqual(mockColorSettings);
+    expect(circle.getRadius()).toBe(mockRadius);
   });
 
   it('should be able to set coordinates', () => {
     const circle = new Circle(mockValue, mockRadius, mockColorSettings);
     circle.setCoordinates(mockX, mockY);
 
-    expect(circle.x).toBe(mockX);
-    expect(circle.y).toBe(mockY);
+    expect((circle as any).x).toBe(mockX);
+    expect((circle as any).y).toBe(mockY);
   });
 
   it('should be able to draw the circle (normal font)', () => {
@@ -72,5 +86,53 @@ describe('Circle tests', () => {
     expect(mockCtx.fill).toBeCalledTimes(1);
     expect(mockCtx.stroke).toBeCalledTimes(1);
     expect(mockCtx.fillText).toBeCalledTimes(1);
+  });
+
+  it('should be able to set color id', () => {
+    const circle = new Circle(mockValue, mockRadius, mockColorSettings);
+    circle.setCoordinates(mockX, mockY);
+    circle.setColorId('mock-color-id');
+
+    expect((circle as any).colorId).toBe('mock-color-id');
+  });
+
+  it('should be able to grow the circle', () => {
+    const circle = new Circle(mockValue, mockRadius, mockColorSettings);
+    circle.setCoordinates(mockX, mockY);
+
+    expect(circle.getRadius()).toBe(20);
+    growRadiusTimes(circle, 1);
+    expect(circle.getRadius()).toBe(20.3);
+    growRadiusTimes(circle, 20);
+    expect(circle.getRadius()).toBe(25);
+  });
+
+  it('should be able to shrink the circle', () => {
+    const circle = new Circle(mockValue, mockRadius, mockColorSettings);
+    circle.setCoordinates(mockX, mockY);
+
+    expect(circle.getRadius()).toBe(20);
+    shrinkRadiusTimes(circle, 1);
+    expect(circle.getRadius()).toBe(19.7);
+    shrinkRadiusTimes(circle, 20);
+    expect(circle.getRadius()).toBe(16);
+  });
+
+  it('should be able to restore the circle (grow)', () => {
+    const circle = new Circle(mockValue, mockRadius, mockColorSettings);
+    circle.setCoordinates(mockX, mockY);
+
+    shrinkRadiusTimes(circle, 20);
+    restoreRadiusTimes(circle, 20);
+    expect(circle.getRadius()).toBe(20);
+  });
+
+  it('should be able to restore the circle (shrink)', () => {
+    const circle = new Circle(mockValue, mockRadius, mockColorSettings);
+    circle.setCoordinates(mockX, mockY);
+
+    growRadiusTimes(circle, 20);
+    restoreRadiusTimes(circle, 20);
+    expect(circle.getRadius()).toBe(20);
   });
 });

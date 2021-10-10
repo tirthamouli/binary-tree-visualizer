@@ -13,9 +13,8 @@ describe('Canvas tests', () => {
     const mockCanvas = document.createElement('canvas');
     const canvasComponent = new CanvasComponent(
         mockCanvas,
-        mockHeight,
-        mockWidth,
     );
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
 
     expect(canvasComponent.getContext()).toBe(mockCanvas.getContext('2d'));
   });
@@ -25,9 +24,8 @@ describe('Canvas tests', () => {
     mockCanvas.getContext = () => null;
     const canvasComponent = new CanvasComponent(
         mockCanvas,
-        mockHeight,
-        mockWidth,
     );
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
 
     expect(() => canvasComponent.getContext())
         .toThrow(new Error('Cannot get 2d context'));
@@ -40,11 +38,11 @@ describe('Canvas tests', () => {
     const mockCircle = new Circle('1', 20, getRandomColor());
     const canvasComponent = new CanvasComponent(
         mockCanvas,
-        mockHeight,
-        mockWidth,
     );
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
     (canvasComponent as any).$hitEl = mockHitCanvas;
     mockCircle.setCoordinates(100, 100);
+
     expect(() => mockCircle.draw(canvasComponent))
         .toThrow(new Error('Cannot get 2d context'));
   });
@@ -53,12 +51,11 @@ describe('Canvas tests', () => {
     const mockCanvas = document.createElement('canvas');
     const canvasComponent = new CanvasComponent(
         mockCanvas,
-        mockHeight,
-        mockWidth,
     );
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
 
     const nextColor = canvasComponent.getNextColor();
-    expect(nextColor).toBe('rgb(0, 0, 0)');
+    expect(nextColor).toBe('rgb(0, 0, 1)');
   });
 
   it('should be able to get the color on click', (done) => {
@@ -66,20 +63,44 @@ describe('Canvas tests', () => {
     const mockCircle = new Circle('1', 20, getRandomColor());
     const canvasComponent = new CanvasComponent(
         mockCanvas,
-        mockHeight,
-        mockWidth,
     );
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
     mockCircle.setCoordinates(100, 100);
     mockCircle.draw(canvasComponent);
 
-    canvasComponent.onClickGetColor((color) => {
+    canvasComponent.onClick((color) => {
       expect(color).toBe('rgb(0, 0, 0)');
       done();
     });
 
     mockCanvas.dispatchEvent(new MouseEvent('click', {
-      clientX: 100,
-      clientY: 100,
+      clientX: 0,
+      clientY: 0,
+    }));
+  });
+
+  it('should be able to get the color on hover', (done) => {
+    const mockCanvas = document.createElement('canvas');
+    const mockCircle = new Circle('1', 20, getRandomColor());
+    const canvasComponent = new CanvasComponent(
+        mockCanvas,
+    );
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
+    mockCircle.setCoordinates(100, 100);
+    mockCircle.draw(canvasComponent);
+
+    canvasComponent.onHover((color) => {
+      expect(color).toBe('rgb(0, 0, 0)');
+      done();
+    });
+
+    mockCanvas.dispatchEvent(new MouseEvent('mousemove', {
+      clientX: 0,
+      clientY: 0,
+    }));
+    mockCanvas.dispatchEvent(new MouseEvent('mousemove', {
+      clientX: 1,
+      clientY: 1,
     }));
   });
 });

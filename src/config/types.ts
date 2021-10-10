@@ -11,6 +11,7 @@ export type CircleColorSettings = {
  */
 export type Theme = {
   radius: number,
+  growthAndShrinkTimes: number,
   leafNodeSpace: number,
   lineHeight: number,
   textFont: string,

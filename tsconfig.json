@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "target": "es5",                     
+    "target": "es6",                     
     "experimentalDecorators": true,
     "resolveJsonModule": true,       
     "outDir": "lib",                               

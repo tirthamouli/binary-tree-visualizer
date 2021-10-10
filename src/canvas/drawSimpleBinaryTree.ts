@@ -105,11 +105,8 @@ function drawSimpleBinaryTree(
   theme.leafNodeSpace;
 
   // Initialize the canvas
-  const canvasComponent = new CanvasComponent(
-      canvasElement,
-      actualMaxHeight,
-      actualMaxWidth,
-  );
+  const canvasComponent = new CanvasComponent(canvasElement);
+  canvasComponent.setMaxWidthAndHeight(actualMaxHeight, actualMaxWidth);
 
   // Recursively draw the tree
   recursivelyDrawNodes(root, canvasComponent, 0.5, {xStart, xEnd});

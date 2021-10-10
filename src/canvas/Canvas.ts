@@ -1,4 +1,5 @@
 import ColorGenerator from '../helpers/ColorGenerator';
+import getRGBString from '../utils/getRGBString';
 import {GetColorCallBack} from './types';
 
 /**
@@ -28,23 +29,33 @@ class CanvasComponent {
    */
   private colorGenerator: ColorGenerator
 
+  /**
+   * The current hovering color
+   */
+  private currentHoveringColor: string = ''
 
   /**
    * For constructing a new canvas component
    *
    * @param {HTMLCanvasElement} $el
-   * @param {number} height
-   * @param {number} width
    */
-  constructor($el: HTMLCanvasElement, height: number, width: number) {
+  constructor($el: HTMLCanvasElement) {
     const $hitEl = document.createElement('canvas');
 
     this.$el = $el;
     this.$hitEl = $hitEl;
     this.colorGenerator = new ColorGenerator();
+  }
 
-    $hitEl.height = $el.height = height;
-    $hitEl.width = $el.width = width;
+  /**
+   * Set the maximum width and height
+   *
+   * @param {number} height
+   * @param {number} width
+   */
+  setMaxWidthAndHeight(height: number, width: number) {
+    this.$hitEl.height = this.$el.height = height;
+    this.$hitEl.width = this.$el.width = width;
   }
 
   /**
@@ -85,20 +96,43 @@ class CanvasComponent {
   }
 
   /**
+   * On hover get the canvas hit color
+   *
+   * @param {GetColorCallBack} cb
+   */
+  onHover(cb: GetColorCallBack) {
+    this.$el.addEventListener('mousemove', (event) => {
+      const {pageX, pageY} = event;
+      const {data: pixel} = this.getHitContext().getImageData(
+          pageX - this.$el.offsetLeft,
+          pageY - this.$el.offsetTop,
+          1, 1,
+      );
+
+      // Callback should only be called on color change
+      const color = getRGBString(pixel[0], pixel[1], pixel[2]);
+      if (this.currentHoveringColor !== color) {
+        this.currentHoveringColor = color;
+        cb(color);
+      }
+    });
+  }
+
+  /**
    * On click of canvas get the hit color
    *
    * @param {GetColorCallBack} cb
    */
-  onClickGetColor(cb: GetColorCallBack) {
+  onClick(cb: GetColorCallBack) {
     this.$el.addEventListener('click', (event) => {
-      const {clientX, clientY} = event;
+      const {pageX, pageY} = event;
+      console.log(pageX, pageY);
       const {data: pixel} = this.getHitContext().getImageData(
-          clientX - this.$el.offsetLeft,
-          clientY - this.$el.offsetTop,
+          pageX - this.$el.offsetLeft,
+          pageY - this.$el.offsetTop,
           1, 1,
       );
-
-      cb(`rgb(${pixel[0]}, ${pixel[1]}, ${pixel[2]})`);
+      cb(getRGBString(pixel[0], pixel[1], pixel[2]));
     });
   }
 }

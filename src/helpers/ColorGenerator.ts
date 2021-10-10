@@ -1,3 +1,10 @@
+import getRGBString from '../utils/getRGBString';
+
+/**
+ * The gap between 2 ids
+ */
+const gap = 10;
+
 /**
  * For generating color
  */
@@ -15,7 +22,7 @@ class ColorGenerator {
   /**
    * The blue color value
    */
-  private blue = 0
+  private blue = 1
 
   /**
    * Increment a color
@@ -23,7 +30,7 @@ class ColorGenerator {
    * @param {'red' | 'green' | 'blue'} color
    */
   incrementColor(color: 'red' | 'green' | 'blue') {
-    this[color] = (this[color] + 1) % 256;
+    this[color] = (this[color] + gap) % 256;
   }
 
   /**
@@ -34,13 +41,13 @@ class ColorGenerator {
    */
   getNextColor() {
     // Generate the rgb value
-    const color = `rgb(${this.red}, ${this.green}, ${this.blue})`;
+    const color = getRGBString(this.red, this.green, this.blue);
 
     // Increment the color
     this.incrementColor('blue');
-    if (this.blue === 0) {
+    if (this.blue < gap) {
       this.incrementColor('green');
-      if (this.green === 0) {
+      if (this.green < gap) {
         this.incrementColor('red');
       }
     }
