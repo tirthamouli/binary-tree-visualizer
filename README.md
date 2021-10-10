@@ -59,9 +59,9 @@ drawBinaryTree can take a 3rd options argument
 import { VisualizationType } from 'binary-tree-visualizer';
 
 type options = {
-  // SIMPLE: Taken by default. It assumes that max number of leaf nodes are present and decides the spacing accordingly
+  // SIMPLE: Taken by default. It assumes that max number of leaf nodes are present and decides the spacing accordingly.
   // PRETTY: Spacing is dynamic according to the nodes.
-  // EXPANDABLE: Not yet implemented.
+  // EXPANDABLE: Only one child can be viewed at a time.
   type?:  VisualizationType.SIMPLE |  VisualizationType.EXPANDABLE | VisualizationType.PRETTY,
   // SUGGESTION: Max heigth of the canvas. If required more will be taken
   maxHeight?: number,
@@ -75,6 +75,9 @@ type options = {
 ### Pretty
 ![Pretty](https://user-images.githubusercontent.com/22812597/133932200-cb612622-1e4c-4cc7-a905-317b638987b4.png)
 
+### Expandable
+![Expandable](https://user-images.githubusercontent.com/22812597/136689897-8987336f-025a-4ad1-8ca8-217003107164.gif)
+ 
 ## Theme
 Theme can be tweaked as well
 ```js
@@ -87,6 +90,8 @@ setTheme(options);
 type options = {
   // Radius of nodes (DEFAULT 20)
   radius?: number,
+  // By how many times radius can grow or shrink (DEFAULT 1.25)
+  growthAndShrinkTimes: number,
   // Minimum leaf node spacing (DEFAULT 60)
   leafNodeSpace?: number,
   // Minimum vertical spacing (DEFAULT 90)
