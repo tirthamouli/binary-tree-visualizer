@@ -123,4 +123,5 @@ drawBinaryTree(root, document.querySelector('canvas'));
 # Demo
 
 Code sandbox: https://codesandbox.io/s/binary-tree-visualizer-coqx6?file=/src/index.ts
+
 Example: https://github.com/tirthamouli/example-binary-tree-visualizer
