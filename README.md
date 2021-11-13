@@ -1,4 +1,7 @@
-# Binary Tree Visualizer
+# Binary Tree Visualizer ![Build](https://github.com/tirthamouli/binary-tree-visualizer/actions/workflows/main.yml/badge.svg) ![Publish](https://github.com/tirthamouli/binary-tree-visualizer/actions/workflows/publish.yml/badge.svg) 
+
+
+
 ![Binary tree](https://user-images.githubusercontent.com/22812597/133884350-4ff8845a-d62f-46d1-b087-12f62cec9c5d.png)
 
 This is a visualizer for binary trees.
