@@ -7,8 +7,9 @@ import {
   getCanvasWidthFromMaxNodeSpacing,
   getXPositionFromGivenHorizontalNodePosition,
 } from '../utils/tree';
-import connectPointsWithBezierCurve from './connectPointsWithBezierCurve';
 import {IndividualInputOptions, PathArray} from './types';
+import connectPointsWithBezierCurve
+  from '../utils/connectPointsWithBezierCurve';
 
 let animationFrameId: number;
 

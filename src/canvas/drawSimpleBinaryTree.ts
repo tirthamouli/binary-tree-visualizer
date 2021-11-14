@@ -10,7 +10,8 @@ import {
   HorizontalStartAndEndInput,
   IndividualInputOptions,
 } from './types';
-import connectPointsWithBezierCurve from './connectPointsWithBezierCurve';
+import connectPointsWithBezierCurve
+  from '../utils/connectPointsWithBezierCurve';
 
 /**
  * Recursively draw all the nodes

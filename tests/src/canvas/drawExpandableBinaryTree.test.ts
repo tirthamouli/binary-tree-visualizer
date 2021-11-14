@@ -2,12 +2,12 @@
  * @jest-environment jsdom
  */
 import connectPointsWithBezierCurve from
-  '../../../src/canvas/connectPointsWithBezierCurve';
+  '../../../src/utils/connectPointsWithBezierCurve';
 import BinaryTreeNode from '../../../src/tree/BinaryTreeNode';
 import drawExpandableBinaryTree from
   '../../../src/canvas/drawExpandableBinaryTree';
 
-jest.mock('../../../src/canvas/connectPointsWithBezierCurve');
+jest.mock('../../../src/utils/connectPointsWithBezierCurve');
 
 describe('drawExpandableBinaryTree tests', () => {
   const mockBinaryTreeNode = new BinaryTreeNode<number>(100);

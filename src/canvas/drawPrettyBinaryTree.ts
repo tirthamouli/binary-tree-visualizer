@@ -7,7 +7,8 @@ import {
   getRequiredAndActualHeightandWidth,
   getXPositionFromGivenHorizontalNodePosition,
 } from '../utils/tree';
-import connectPointsWithBezierCurve from './connectPointsWithBezierCurve';
+import connectPointsWithBezierCurve
+  from '../utils/connectPointsWithBezierCurve';
 import {
   IndividualInputOptions,
   LeftAndRightSpacing,

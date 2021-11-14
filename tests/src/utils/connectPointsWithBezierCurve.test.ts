@@ -3,7 +3,7 @@
  */
 import CanvasComponent from '../../../src/canvas/Canvas';
 import connectPointsWithBezierCurve from
-  '../../../src/canvas/connectPointsWithBezierCurve';
+  '../../../src/utils/connectPointsWithBezierCurve';
 import BezierCurve from '../../../src/strokes/BezierCurve';
 
 jest.mock('../../../src/strokes/BezierCurve');

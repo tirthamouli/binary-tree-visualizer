@@ -1,7 +1,10 @@
-import CanvasComponent from './Canvas';
+import CanvasComponent from '../canvas/Canvas';
 import theme from '../config/theme';
 import BezierCurve from '../strokes/BezierCurve';
-import {HorizontalStartAndEndInput, VerticalStartAndEndInput} from './types';
+import {
+  HorizontalStartAndEndInput,
+  VerticalStartAndEndInput,
+} from '../canvas/types';
 
 /**
  * Connect two points with a bezier curve
