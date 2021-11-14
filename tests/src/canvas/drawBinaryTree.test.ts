@@ -27,7 +27,7 @@ describe('drawBinaryTree tests', () => {
   it('should be able to draw pretty binary tree', () => {
     drawBinaryTree(mockBinaryTreeNode, mockCanvas, {
       type: VisualizationType.PRETTY,
-      maxHeigth: mockMaxHeight,
+      maxHeight: mockMaxHeight,
       maxWidth: mockMaxWidth,
     });
     expect(drawPrettyBinaryTree).toBeCalled();

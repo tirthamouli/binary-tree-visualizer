@@ -37,7 +37,7 @@ describe('drawExpandableBinaryTree tests', () => {
 
   it('should be able to draw an expandable', () => {
     drawExpandableBinaryTree(mockBinaryTreeNode, mockCanvas, {
-      maxHeigth: 1080,
+      maxHeight: 1080,
       maxWidth: 1920,
     });
     mockCanvas.dispatchEvent(new MouseEvent('click', {

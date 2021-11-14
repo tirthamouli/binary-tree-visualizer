@@ -46,7 +46,7 @@ export function getCanvasHeightFromTreeHeight(treeHeight: number) {
  * @param {number} maxNodeSpacing
  * @param {number} heightOfTree
  * @param {number} maxWidth
- * @param {number} maxHeigth
+ * @param {number} maxHeight
  * @return {{
  *  maxCanvasHeightRequired: number,
  *  maxCanvasWidthRequired:number,
@@ -58,7 +58,7 @@ export function getRequiredAndActualHeightandWidth(
     maxNodeSpacing: number,
     heightOfTree: number,
     maxWidth: number,
-    maxHeigth: number,
+    maxHeight: number,
 ) {
   const maxCanvasWidthRequired = getCanvasWidthFromMaxNodeSpacing(
       maxNodeSpacing,
@@ -66,8 +66,8 @@ export function getRequiredAndActualHeightandWidth(
   const maxCanvasHeightRequired = getCanvasHeightFromTreeHeight(heightOfTree+1);
   const actualMaxWidth = maxCanvasWidthRequired > maxWidth ?
     maxCanvasWidthRequired : maxWidth;
-  const actualMaxHeight = maxCanvasHeightRequired > maxHeigth ?
-    maxCanvasHeightRequired : maxHeigth;
+  const actualMaxHeight = maxCanvasHeightRequired > maxHeight ?
+    maxCanvasHeightRequired : maxHeight;
 
   return {
     maxCanvasHeightRequired,

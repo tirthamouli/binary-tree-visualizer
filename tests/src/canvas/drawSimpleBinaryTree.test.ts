@@ -26,7 +26,7 @@ describe('drawSimpleBinaryTree tests', () => {
 
   it('should be able to draw when max width and height are greater', () => {
     drawSimpleBinaryTree(mockBinaryTreeNode, mockCanvas, {
-      maxHeigth: 1080,
+      maxHeight: 1080,
       maxWidth: 1920,
     });
 
@@ -35,7 +35,7 @@ describe('drawSimpleBinaryTree tests', () => {
 
   it('should be able to draw when max width and height are lesser', () => {
     drawSimpleBinaryTree(mockBinaryTreeNode, mockCanvas, {
-      maxHeigth: 10,
+      maxHeight: 10,
       maxWidth: 20,
     });
 

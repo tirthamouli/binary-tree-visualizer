@@ -272,7 +272,7 @@ function animationFrameCB(
   const requiredWidth = getCanvasWidthFromMaxNodeSpacing(
       leftNodeWidth+rightNodeWidth,
   );
-  const actualHeight = Math.max(requiredHeight, options.maxHeigth);
+  const actualHeight = Math.max(requiredHeight, options.maxHeight);
   const actualWidth = Math.max(requiredWidth, options.maxWidth);
   const xStart = (actualWidth/2) - (requiredWidth/2);
 

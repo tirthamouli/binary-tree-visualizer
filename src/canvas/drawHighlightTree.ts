@@ -114,13 +114,13 @@ function calculateSpacingMapRecursively(
 }
 
 /**
- * Draw an explandable binary tree
+ * Draw a highlight binary tree where hovered on nodes are highlighted
  *
  * @param {BinaryTreeNode<string | number>} root
  * @param {HTMLCanvasElement} canvasElement
  * @param {IndividualInputOptions} options
  */
-function drawPrettyBinaryTree(
+function drawHighlightTree(
     root: BinaryTreeNode<string | number>,
     canvasElement: HTMLCanvasElement,
     options: IndividualInputOptions,
@@ -158,4 +158,4 @@ function drawPrettyBinaryTree(
   });
 }
 
-export default drawPrettyBinaryTree;
+export default drawHighlightTree;

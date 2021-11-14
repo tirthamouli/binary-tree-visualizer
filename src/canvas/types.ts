@@ -29,7 +29,7 @@ export type LeftAndRightSpacing = {
  */
 export type IndividualInputOptions = {
   maxWidth: number,
-  maxHeigth: number,
+  maxHeight: number,
 };
 
 /**

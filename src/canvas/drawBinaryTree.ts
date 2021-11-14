@@ -20,28 +20,28 @@ function drawBinaryTree(
 ) {
   const {
     type = VisualizationType.SIMPLE,
-    maxHeigth = window.innerHeight,
+    maxHeight = window.innerHeight,
     maxWidth = window.innerWidth,
   } = options;
 
   switch (type) {
     case VisualizationType.PRETTY:
       drawPrettyBinaryTree(root, canvasElement, {
-        maxHeigth,
+        maxHeight,
         maxWidth,
       });
       break;
 
     case VisualizationType.EXPANDABLE:
       drawExpandableBinaryTree(root, canvasElement, {
-        maxHeigth,
+        maxHeight,
         maxWidth,
       });
       break;
 
     default:
       drawSimpleBinaryTree(root, canvasElement, {
-        maxHeigth,
+        maxHeight,
         maxWidth,
       });
       break;

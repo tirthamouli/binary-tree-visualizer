@@ -83,7 +83,7 @@ function drawSimpleBinaryTree(
 ) {
   const heightOfTree = root.getHeight();
   const maxNumberOfLeafNodes = getMaxLeafNodesFromHeight(heightOfTree);
-  const {maxHeigth, maxWidth} = options;
+  const {maxHeight, maxWidth} = options;
 
   // Max height and width requirements
   const {
@@ -94,7 +94,7 @@ function drawSimpleBinaryTree(
       maxNumberOfLeafNodes,
       heightOfTree,
       maxWidth,
-      maxHeigth,
+      maxHeight,
   );
 
   // Init calculation

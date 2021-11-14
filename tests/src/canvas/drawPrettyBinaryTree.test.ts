@@ -25,7 +25,7 @@ describe('drawPrettyBinaryTree tests', () => {
 
   it('should be able to draw a pretty binary tree', () => {
     drawPrettyBinaryTree(mockBinaryTreeNode, mockCanvas, {
-      maxHeigth: 1080,
+      maxHeight: 1080,
       maxWidth: 1920,
     });
 

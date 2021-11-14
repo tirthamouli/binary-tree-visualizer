@@ -66,7 +66,7 @@ type options = {
   // PRETTY: Spacing is dynamic according to the nodes.
   // EXPANDABLE: Only one child can be viewed at a time.
   type?:  VisualizationType.SIMPLE |  VisualizationType.EXPANDABLE | VisualizationType.PRETTY,
-  // SUGGESTION: Max heigth of the canvas. If required more will be taken
+  // SUGGESTION: Max height of the canvas. If required more will be taken
   maxHeight?: number,
   // SUGGESTION: Max width of the canvas. If required more will be taken
   maxWidth?: number
