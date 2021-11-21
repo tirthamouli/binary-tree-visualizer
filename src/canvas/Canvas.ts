@@ -48,6 +48,14 @@ class CanvasComponent {
   }
 
   /**
+   * Clears the canvas
+   */
+  clearCanvas() {
+    const {height, width} = this.$el;
+    this.getContext().clearRect(0, 0, width, height);
+  }
+
+  /**
    * Set the maximum width and height
    *
    * @param {number} height

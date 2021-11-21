@@ -39,6 +39,13 @@ describe('drawBinaryTree tests', () => {
     });
     expect(drawExpandableBinaryTree).toBeCalled();
   });
+
+  it('should be able to draw highlight binary tree', () => {
+    drawBinaryTree(mockBinaryTreeNode, mockCanvas, {
+      type: VisualizationType.HIGHLIGHT,
+    });
+    expect(drawPrettyBinaryTree).toBeCalled();
+  });
 });
 
 

@@ -30,6 +30,7 @@ export type LeftAndRightSpacing = {
 export type IndividualInputOptions = {
   maxWidth: number,
   maxHeight: number,
+  highlightMode?: boolean
 };
 
 /**
@@ -37,7 +38,9 @@ export type IndividualInputOptions = {
  */
 export type MainInputOptions = {
   type: VisualizationType,
-} & IndividualInputOptions;
+  maxWidth: number,
+  maxHeight: number,
+};
 
 /**
  * Callback for getting color

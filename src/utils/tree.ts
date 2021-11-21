@@ -54,7 +54,7 @@ export function getCanvasHeightFromTreeHeight(treeHeight: number) {
  *  actualMaxWidth: number
  * }}
  */
-export function getRequiredAndActualHeightandWidth(
+export function getRequiredAndActualHeightAndWidth(
     maxNodeSpacing: number,
     heightOfTree: number,
     maxWidth: number,

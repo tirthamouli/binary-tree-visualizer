@@ -4,7 +4,7 @@ import theme from '../config/theme';
 import {
   getCanvasHeightFromTreeHeight,
   getMaxLeafNodesFromHeight,
-  getRequiredAndActualHeightandWidth,
+  getRequiredAndActualHeightAndWidth,
 } from '../utils/tree';
 import {
   HorizontalStartAndEndInput,
@@ -91,7 +91,7 @@ function drawSimpleBinaryTree(
     maxCanvasWidthRequired,
     actualMaxHeight,
     actualMaxWidth,
-  } = getRequiredAndActualHeightandWidth(
+  } = getRequiredAndActualHeightAndWidth(
       maxNumberOfLeafNodes,
       heightOfTree,
       maxWidth,

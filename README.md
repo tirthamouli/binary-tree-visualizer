@@ -64,8 +64,9 @@ import { VisualizationType } from 'binary-tree-visualizer';
 type options = {
   // SIMPLE: Taken by default. It assumes that max number of leaf nodes are present and decides the spacing accordingly.
   // PRETTY: Spacing is dynamic according to the nodes.
+  // HIGHLIGHT: This is the same as PRETTY. Only difference is that the nodes expand when they are hovered over.
   // EXPANDABLE: Only one child can be viewed at a time.
-  type?:  VisualizationType.SIMPLE |  VisualizationType.EXPANDABLE | VisualizationType.PRETTY,
+  type?:  VisualizationType.SIMPLE |  VisualizationType.EXPANDABLE | VisualizationType.PRETTY | VisualizationType.HIGHLIGHT,
   // SUGGESTION: Max height of the canvas. If required more will be taken
   maxHeight?: number,
   // SUGGESTION: Max width of the canvas. If required more will be taken

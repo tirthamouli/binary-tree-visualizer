@@ -4,7 +4,7 @@ import {
   getCanvasWidthFromMaxNodeSpacing,
   getMaxLeafNodesFromHeight,
   getXPositionFromGivenHorizontalNodePosition,
-  getRequiredAndActualHeightandWidth,
+  getRequiredAndActualHeightAndWidth,
 } from '../../../src/utils/tree';
 
 describe('Tree utils test', () => {
@@ -63,7 +63,7 @@ describe('Tree utils test', () => {
         maxCanvasWidthRequired,
         actualMaxHeight,
         actualMaxWidth,
-      } = getRequiredAndActualHeightandWidth(
+      } = getRequiredAndActualHeightAndWidth(
           mockMaxNodeSpacing,
           mockHeightOfTree,
           mockMaxWidth,
@@ -89,7 +89,7 @@ describe('Tree utils test', () => {
         maxCanvasWidthRequired,
         actualMaxHeight,
         actualMaxWidth,
-      } = getRequiredAndActualHeightandWidth(
+      } = getRequiredAndActualHeightAndWidth(
           mockMaxNodeSpacing,
           mockHeightOfTree,
           mockMaxWidth,

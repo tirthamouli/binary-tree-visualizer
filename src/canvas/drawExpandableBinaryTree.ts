@@ -11,6 +11,9 @@ import {IndividualInputOptions, PathArray} from './types';
 import connectPointsWithBezierCurve
   from '../utils/connectPointsWithBezierCurve';
 
+/**
+ * The current animation frame that is going on
+ */
 let animationFrameId: number;
 
 /**
@@ -278,6 +281,7 @@ function animationFrameCB(
   const xStart = (actualWidth/2) - (requiredWidth/2);
 
   // Set the height and width
+  // This also clears the canvas. So no need to clear it manually.
   comp.setMaxWidthAndHeight(actualHeight, actualWidth);
 
   // Initialize color id to path map
@@ -295,7 +299,7 @@ function animationFrameCB(
 }
 
 /**
- * Draw an explandable binary tree
+ * Draw an expandable binary tree
  *
  * @param {BinaryTreeNode<string | number>} root
  * @param {HTMLCanvasElement} canvasElement

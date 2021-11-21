@@ -39,6 +39,14 @@ function drawBinaryTree(
       });
       break;
 
+    case VisualizationType.HIGHLIGHT:
+      drawPrettyBinaryTree(root, canvasElement, {
+        maxHeight,
+        maxWidth,
+        highlightMode: true,
+      });
+      break;
+
     default:
       drawSimpleBinaryTree(root, canvasElement, {
         maxHeight,
