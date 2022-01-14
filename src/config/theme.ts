@@ -5,6 +5,7 @@ const theme: Theme = {
   growthAndShrinkTimes: 1.25,
   leafNodeSpace: 75,
   lineHeight: 90,
+  fontSize: 10,
   textFont: 'Poppins',
   strokeColor: '#f56042',
   colorArray: [
@@ -26,6 +27,7 @@ export function setTheme(userDefinedTheme: Partial<Theme>) {
     colorArray = theme.colorArray,
     textFont = theme.textFont,
     strokeColor = theme.strokeColor,
+    fontSize = theme.fontSize,
   } = userDefinedTheme;
 
   theme.radius = radius;
@@ -35,6 +37,7 @@ export function setTheme(userDefinedTheme: Partial<Theme>) {
   theme.colorArray = colorArray;
   theme.textFont = textFont;
   theme.strokeColor = strokeColor;
+  theme.fontSize = fontSize;
 }
 
 export default theme;

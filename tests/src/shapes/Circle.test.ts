@@ -68,7 +68,7 @@ describe('Circle tests', () => {
     const circle = new Circle(mockValue, mockRadius, mockColorSettings);
     circle.draw(mockComp);
 
-    expect(mockCtx.font).toBe(`8pt ${theme.textFont}`);
+    expect(mockCtx.font).toBe(`10pt ${theme.textFont}`);
     expect(mockCtx.beginPath).toBeCalledTimes(1);
     expect(mockCtx.arc).toBeCalledTimes(2);
     expect(mockCtx.fill).toBeCalledTimes(1);

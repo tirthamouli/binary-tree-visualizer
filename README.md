@@ -100,9 +100,11 @@ type options = {
   leafNodeSpace?: number,
   // Minimum vertical spacing (DEFAULT 90)
   lineHeight?: number,
+  // The font size of the value shown inside the node
+  fontSize: number,
   // Font family shown on canvas (DEFAULT 'Poppins') (import required)
   textFont?: string,
-  // The color of lines/storkes (DEFAULT '#f56042')
+  // The color of lines/strokes (DEFAULT '#f56042')
   strokeColor?: string,
   // A random color that is selected for each node circle
   // (DEFAULT [{bgColor: '#fff2e0', borderColor: '#f56042'}])

@@ -13,6 +13,7 @@ export type Theme = {
   radius: number,
   growthAndShrinkTimes: number,
   leafNodeSpace: number,
+  fontSize: number
   lineHeight: number,
   textFont: string,
   strokeColor: string,

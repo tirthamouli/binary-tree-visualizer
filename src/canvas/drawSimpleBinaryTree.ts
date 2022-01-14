@@ -71,7 +71,7 @@ function recursivelyDrawNodes(
 }
 
 /**
- * Draw an explandable binary tree
+ * Draw an expandable binary tree
  *
  * @param {BinaryTreeNode<string | number>} root
  * @param {HTMLCanvasElement} canvasElement

@@ -107,14 +107,9 @@ class Circle {
     const {x, y, value, colorSettings} = this;
     const {borderColor} = colorSettings;
 
-    // @todo: Make this configurable
     // Decide font size
-    let fontSize = '10pt';
-    let ySpacing = 5;
-    if (value.length > 3) {
-      fontSize = '8pt';
-      ySpacing = 3;
-    }
+    const fontSize = `${theme.fontSize}pt`;
+    const ySpacing = theme.fontSize/2;
 
     ctx.fillStyle = borderColor;
     ctx.font = `${fontSize} ${theme.textFont}`;
