@@ -1,4 +1,4 @@
-import {CanvasComponent} from '.';
+import CanvasComponent from './Canvas';
 import theme from '../config/theme';
 import BinaryTreeNode from '../tree/BinaryTreeNode';
 import {Point} from '../types/Point';
@@ -302,36 +302,35 @@ function animationFrameCB(
  * Draw an expandable binary tree
  *
  * @param {BinaryTreeNode<string | number>} root
- * @param {HTMLCanvasElement} canvasElement
+ * @param {CanvasComponent} canvasComponent
  * @param {IndividualInputOptions} options
  */
 function drawExpandableBinaryTree(
     root: BinaryTreeNode<string | number>,
-    canvasElement: HTMLCanvasElement,
+    canvasComponent: CanvasComponent,
     options: IndividualInputOptions,
 ) {
   // Initialization
-  const comp = new CanvasComponent(canvasElement);
   globalPathArray = [];
 
   /**
    * Click event handler
    */
-  comp.onClick((color) => {
+  canvasComponent.onClick((color) => {
     globalPathArray = colorIdToPathMap.get(color) || globalPathArray;
-    requestAnimationFrame(root, comp, options);
+    requestAnimationFrame(root, canvasComponent, options);
   });
 
   /**
    * Hover event handler
    */
-  comp.onHover((color) => {
+  canvasComponent.onHover((color) => {
     hoveredColorId = color;
-    requestAnimationFrame(root, comp, options);
+    requestAnimationFrame(root, canvasComponent, options);
   });
 
   // Draw frame
-  requestAnimationFrame(root, comp, options);
+  requestAnimationFrame(root, canvasComponent, options);
 }
 
 export default drawExpandableBinaryTree;

@@ -5,16 +5,18 @@ import connectPointsWithBezierCurve from
   '../../../src/utils/connectPointsWithBezierCurve';
 import drawPrettyBinaryTree from '../../../src/canvas/drawPrettyBinaryTree';
 import BinaryTreeNode from '../../../src/tree/BinaryTreeNode';
+import CanvasComponent from '../../../src/canvas/Canvas';
 
 jest.mock('../../../src/utils/connectPointsWithBezierCurve');
 
 describe('drawPrettyBinaryTree tests', () => {
   const mockBinaryTreeNode = new BinaryTreeNode<number>(100);
+  const mockCanvas = document.createElement('canvas');
+  const mockCanvasComponent = new CanvasComponent(mockCanvas);
   mockBinaryTreeNode.setLeft(new BinaryTreeNode(200));
   mockBinaryTreeNode.left?.setLeft(new BinaryTreeNode(300));
   mockBinaryTreeNode.left?.setRight(new BinaryTreeNode(400));
   mockBinaryTreeNode.setRight(new BinaryTreeNode(500));
-  const mockCanvas = document.createElement('canvas');
 
   beforeEach(
       () => {
@@ -35,7 +37,7 @@ describe('drawPrettyBinaryTree tests', () => {
   });
 
   it('should be able to draw a pretty binary tree', () => {
-    drawPrettyBinaryTree(mockBinaryTreeNode, mockCanvas, {
+    drawPrettyBinaryTree(mockBinaryTreeNode, mockCanvasComponent, {
       maxHeight: 1080,
       maxWidth: 1920,
     });

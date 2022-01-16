@@ -79,6 +79,30 @@ describe('Canvas tests', () => {
     }));
   });
 
+  it('should be able to remove old on click listener', (done) => {
+    const mockCanvas = document.createElement('canvas');
+    const mockCircle = new Circle('1', 20, getRandomColor());
+    const canvasComponent = new CanvasComponent(
+        mockCanvas,
+    );
+    const mockFirstCallback = jest.fn();
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
+    mockCircle.setCoordinates(100, 100);
+    mockCircle.draw(canvasComponent);
+
+    canvasComponent.onClick(mockFirstCallback);
+    canvasComponent.onClick((color) => {
+      expect(color).toBe('rgb(0, 0, 0)');
+      expect(mockFirstCallback).toBeCalledTimes(0);
+      done();
+    });
+
+    mockCanvas.dispatchEvent(new MouseEvent('click', {
+      clientX: 0,
+      clientY: 0,
+    }));
+  });
+
   it('should be able to get the color on hover', (done) => {
     const mockCanvas = document.createElement('canvas');
     const mockCircle = new Circle('1', 20, getRandomColor());
@@ -91,6 +115,34 @@ describe('Canvas tests', () => {
 
     canvasComponent.onHover((color) => {
       expect(color).toBe('rgb(0, 0, 0)');
+      done();
+    });
+
+    mockCanvas.dispatchEvent(new MouseEvent('mousemove', {
+      clientX: 0,
+      clientY: 0,
+    }));
+    mockCanvas.dispatchEvent(new MouseEvent('mousemove', {
+      clientX: 1,
+      clientY: 1,
+    }));
+  });
+
+  it('should remove old hover event listeners', (done) => {
+    const mockCanvas = document.createElement('canvas');
+    const mockCircle = new Circle('1', 20, getRandomColor());
+    const canvasComponent = new CanvasComponent(
+        mockCanvas,
+    );
+    const mockFirstCallback = jest.fn();
+    canvasComponent.setMaxWidthAndHeight(mockHeight, mockWidth);
+    mockCircle.setCoordinates(100, 100);
+    mockCircle.draw(canvasComponent);
+
+    canvasComponent.onHover(mockFirstCallback);
+    canvasComponent.onHover((color) => {
+      expect(color).toBe('rgb(0, 0, 0)');
+      expect(mockFirstCallback).toBeCalledTimes(0);
       done();
     });
 

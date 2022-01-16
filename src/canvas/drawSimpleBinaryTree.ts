@@ -74,12 +74,12 @@ function recursivelyDrawNodes(
  * Draw an expandable binary tree
  *
  * @param {BinaryTreeNode<string | number>} root
- * @param {HTMLCanvasElement} canvasElement
+ * @param {CanvasComponent} canvasComponent
  * @param {IndividualInputOptions} options
  */
 function drawSimpleBinaryTree(
     root: BinaryTreeNode<string | number>,
-    canvasElement: HTMLCanvasElement,
+    canvasComponent: CanvasComponent,
     options: IndividualInputOptions,
 ) {
   const heightOfTree = root.getHeight();
@@ -106,7 +106,6 @@ function drawSimpleBinaryTree(
   theme.leafNodeSpace;
 
   // Initialize the canvas
-  const canvasComponent = new CanvasComponent(canvasElement);
   canvasComponent.setMaxWidthAndHeight(actualMaxHeight, actualMaxWidth);
 
   // Recursively draw the tree

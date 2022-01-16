@@ -1,4 +1,4 @@
-import {CanvasComponent} from '.';
+import CanvasComponent from './Canvas';
 import theme from '../config/theme';
 import BinaryTreeNode from '../tree/BinaryTreeNode';
 import {Point} from '../types/Point';
@@ -198,12 +198,12 @@ function calculateSpacingMapRecursively(
  * Draw a pretty binary tree
  *
  * @param {BinaryTreeNode<string | number>} root
- * @param {HTMLCanvasElement} canvasElement
+ * @param {CanvasComponent} canvasComponent
  * @param {IndividualInputOptions} options
  */
 function drawPrettyBinaryTree(
     root: BinaryTreeNode<string | number>,
-    canvasElement: HTMLCanvasElement,
+    canvasComponent: CanvasComponent,
     options: IndividualInputOptions,
 ) {
   spacingMap = new Map();
@@ -229,7 +229,6 @@ function drawPrettyBinaryTree(
   const xStart = (midPointInCanvas - maxCanvasWidthRequired / 2);
 
   // Initialize the canvas
-  const canvasComponent = new CanvasComponent(canvasElement);
   canvasComponent.setMaxWidthAndHeight(actualMaxHeight, actualMaxWidth);
 
   /**

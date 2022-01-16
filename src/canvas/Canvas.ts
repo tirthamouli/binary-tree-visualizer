@@ -35,6 +35,16 @@ class CanvasComponent {
   private currentHoveringColor: string = ''
 
   /**
+   * For storing the on hover callback
+   */
+  private onHoverCB?: (event: MouseEvent) => void
+
+  /**
+   * For storing the on click callback
+   */
+  private onClickCB?: (event: MouseEvent) => void
+
+  /**
    * For constructing a new canvas component
    *
    * @param {HTMLCanvasElement} $el
@@ -109,7 +119,13 @@ class CanvasComponent {
    * @param {GetColorCallBack} cb
    */
   onHover(cb: GetColorCallBack) {
-    this.$el.addEventListener('mousemove', (event) => {
+    // Clear previous listeners
+    if (this.onHoverCB) {
+      this.$el.removeEventListener('mousemove', this.onHoverCB);
+    }
+
+    // Set the callback
+    this.onHoverCB = (event: MouseEvent) => {
       const {pageX, pageY} = event;
       const {data: pixel} = this.getHitContext().getImageData(
           pageX - this.$el.offsetLeft,
@@ -123,7 +139,10 @@ class CanvasComponent {
         this.currentHoveringColor = color;
         cb(color);
       }
-    });
+    };
+
+    // Add the event listener
+    this.$el.addEventListener('mousemove', this.onHoverCB);
   }
 
   /**
@@ -132,7 +151,13 @@ class CanvasComponent {
    * @param {GetColorCallBack} cb
    */
   onClick(cb: GetColorCallBack) {
-    this.$el.addEventListener('click', (event) => {
+    // Clear previous listeners
+    if (this.onClickCB) {
+      this.$el.removeEventListener('click', this.onClickCB);
+    }
+
+    // Set the callback
+    this.onClickCB = (event: MouseEvent) => {
       const {pageX, pageY} = event;
       console.log(pageX, pageY);
       const {data: pixel} = this.getHitContext().getImageData(
@@ -141,7 +166,10 @@ class CanvasComponent {
           1, 1,
       );
       cb(getRGBString(pixel[0], pixel[1], pixel[2]));
-    });
+    };
+
+    // Add the event listener
+    this.$el.addEventListener('click', this.onClickCB);
   }
 }
 

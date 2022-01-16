@@ -4,7 +4,10 @@ import drawPrettyBinaryTree from './drawPrettyBinaryTree';
 import drawExpandableBinaryTree from './drawExpandableBinaryTree';
 import drawSimpleBinaryTree from './drawSimpleBinaryTree';
 import {MainInputOptions} from './types';
+import CanvasComponent from './Canvas';
 
+// For keeping track of canvas components for canvas elements
+const canvasMap: Map<HTMLCanvasElement, CanvasComponent> = new Map();
 
 /**
  * Draw a binary tree in one of the given types
@@ -24,23 +27,27 @@ function drawBinaryTree(
     maxWidth = window.innerWidth,
   } = options;
 
+  const canvasComponent = canvasMap.get(canvasElement) ||
+  new CanvasComponent(canvasElement);
+  canvasMap.set(canvasElement, canvasComponent);
+
   switch (type) {
     case VisualizationType.PRETTY:
-      drawPrettyBinaryTree(root, canvasElement, {
+      drawPrettyBinaryTree(root, canvasComponent, {
         maxHeight,
         maxWidth,
       });
       break;
 
     case VisualizationType.EXPANDABLE:
-      drawExpandableBinaryTree(root, canvasElement, {
+      drawExpandableBinaryTree(root, canvasComponent, {
         maxHeight,
         maxWidth,
       });
       break;
 
     case VisualizationType.HIGHLIGHT:
-      drawPrettyBinaryTree(root, canvasElement, {
+      drawPrettyBinaryTree(root, canvasComponent, {
         maxHeight,
         maxWidth,
         highlightMode: true,
@@ -48,7 +55,7 @@ function drawBinaryTree(
       break;
 
     default:
-      drawSimpleBinaryTree(root, canvasElement, {
+      drawSimpleBinaryTree(root, canvasComponent, {
         maxHeight,
         maxWidth,
       });
